@@ -1,0 +1,13 @@
+{
+    "args" : [
+        "-ID:/Software/Rstudio/resources/libclang/builtin-headers/3.4",
+        "-IC:/RBuildTools/3.5/mingw_64/x86_64-w64-mingw32/include",
+        "-IC:/RBuildTools/3.5/mingw_64/x86_64-w64-mingw32/include/c++",
+        "-IC:/RBuildTools/3.5/mingw_64/x86_64-w64-mingw32/include/c++/x86_64-w64-mingw32",
+        "-ID:/Software/R/R-3.5.1/include",
+        "-DNDEBUG"
+    ],
+    "hash" : "1541117239",
+    "is_cpp" : true,
+    "pch" : ""
+}

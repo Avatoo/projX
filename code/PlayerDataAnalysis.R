@@ -76,6 +76,7 @@ dfMatchEngland = dplyr::filter(dfMatch, league_id == 1729) %>%
 cl <- makeSOCKcluster(7)
 registerDoSNOW(cl)
 
+# Need to install package "MapMatchPlayerToRating" in RPackage folder
 arrayHomeAwayPlayerColName = names(dfMatchEngland)[grepl("player", names(dfMatchEngland))]
 arrayHomeAwayPlayerColName = arrayHomeAwayPlayerColName
 dfOverallRating = foreach (i = arrayHomeAwayPlayerColName, .combine = cbind, 

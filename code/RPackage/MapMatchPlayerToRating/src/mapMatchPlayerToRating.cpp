@@ -45,12 +45,14 @@ std::vector<int> mapMatchPlayerToRating(NumericVector playerIdFromMatchDf,
 
     // From dateSubRange, find the date which is the closest to the match date, call it dateClosest
     // Likewise find the overall rating for this play at dateClosest
-    int dateDif = INT_MAX;
-    int dateClosest = 0;
-    int overallRatingThisDate = 0;
+    int dateDif;
+    int dateDifMin = INT_MAX;
+    int dateClosest;
+    int overallRatingThisDate;
     for (int j = 0; j < (int) dateSubRange.size(); ++j) {
-      if (dateDif >= abs(dateSubRange[j] - dateFromMatchDf[i])) {
-        dateDif = abs(dateSubRange[j] - dateFromMatchDf[i]);
+      dateDif = abs(dateSubRange[j] - dateFromMatchDf[i]);
+      if (dateDif <= dateDifMin) {
+        dateDifMin = dateDif;
         dateClosest = dateSubRange[j];
         overallRatingThisDate = overallRatingSubRange[j];
       }

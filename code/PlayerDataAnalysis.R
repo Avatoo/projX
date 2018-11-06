@@ -5,6 +5,10 @@ library(lubridate)
 library(tictoc)
 library(doSNOW)
 library(keras)
+if (!require(MapMatchPlayerToRating)) {
+  install.packages("lib/MapMatchPlayerToRating_0.1.0.tar.gz", 
+                   repos = NULL, type = "source")
+} 
 
 #==============================================================================================================================
 # Read from SQL database
@@ -12,7 +16,7 @@ library(keras)
 
 # connect to sql database
 connectToSQL <- dbConnect(drv = RSQLite::SQLite(), 
-                          dbname = "D:/Development/Programming/FootballBet/data/player_stats/EuropeanSoccerDatabase.sqlite")
+                          dbname = "data/player_stats/EuropeanSoccerDatabase.sqlite")
 
 # list all tables
 # exclude sqlite_sequence (contains table information)
@@ -142,7 +146,7 @@ dfTeamAttributesAfterClean = cbind(dfTeamAttributes[sapply(dfTeamAttributes, cla
  #   - Score for the team will be chosen based on the date which is closest to the match date
 
 Sys.setenv("PKG_CXXFLAGS"="-std=c++11")
-sourceCpp("D:/Development/Programming/Git/projX/code/mapTeamInMatchDfToNumericScore.cpp")
+sourceCpp("code/mapTeamInMatchDfToNumericScore.cpp")
 
 # Initiate variables to store output from the Rcpp function "mapTeamInMatchDfToNumericScore"
 listTeamScoreOutput = {}
